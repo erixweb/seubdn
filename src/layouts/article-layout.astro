@@ -1,0 +1,44 @@
+---
+import "../styles/index.css"
+
+const { frontmatter } = Astro.props
+---
+
+<!doctype html>
+<html lang="es-CA">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>seubdn</title>
+		<link rel="icon" href="/seubdn.webp" />
+		<style is:global>
+			main h1 {
+				text-align: center;
+				font-size: 25px;
+				font-weight: 800;
+				max-width: 500px;
+				margin: auto;
+			}
+		</style>
+	</head>
+	<body class="font-sans">
+		<nav class="max-w-[1000px] p-[26px] m-auto">
+			<a href="/">
+				<img src="/seubdn.webp" alt="Logo de seubdn" class="w-[62px] h-[62px]" />
+			</a>
+		</nav>
+		<header class="max-w-[1000px] p-[26px] m-auto flex">
+			<div>
+				<img src={frontmatter.image} alt="">
+			</div>
+			<div class="px-[12px]">
+				<h1 class="font-bold text-[25px]">{frontmatter.title}</h1>
+			</div>
+		</header>
+		<main class="max-w-[1000px] p-[26px] m-auto">
+			
+			<slot />
+		</main>
+	</body>
+</html>
