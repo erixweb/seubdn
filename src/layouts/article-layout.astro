@@ -20,12 +20,26 @@ const year = date.getFullYear()
 		<link rel="icon" href="/seubdn.webp" />
 		<style is:global>
 			main h1 {
-				text-align: center;
 				font-size: 25px;
+			}
+			main h2 {
+				font-size: 20px;
+			}
+			main h1, main h2 {
+				text-align: center;
 				font-weight: 800;
 				max-width: 500px;
 				margin: auto;
+				margin-top: 20px;
+				margin-bottom: 20px;
 			}
+			main img {
+				border-radius: 7px;
+				width: 100%;
+				max-height: 500px;
+				object-fit: cover;
+			}
+			
 		</style>
 	</head>
 	<body class="font-sans">
@@ -44,7 +58,7 @@ const year = date.getFullYear()
 				<p>{day}/{month+1}/{year}</p>
 			</div>
 		</header>
-		<main class="max-w-[1000px] p-[26px] m-auto">
+		<main class="max-w-[750px] p-[26px] m-auto">
 			<slot />
 		</main>
 	</body>
