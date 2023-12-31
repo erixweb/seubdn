@@ -2,6 +2,12 @@
 import "../styles/index.css"
 
 const { frontmatter } = Astro.props
+
+const date = new Date(frontmatter.date)
+const day = date.getDate()
+const month = date.getMonth()
+const year = date.getFullYear()
+
 ---
 
 <!doctype html>
@@ -34,6 +40,8 @@ const { frontmatter } = Astro.props
 			</div>
 			<div class="px-[12px]">
 				<h1 class="font-bold text-[25px]">{frontmatter.title}</h1>
+				<p>{frontmatter.author}</p>
+				<p>{day}/{month+1}/{year}</p>
 			</div>
 		</header>
 		<main class="max-w-[1000px] p-[26px] m-auto">

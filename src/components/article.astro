@@ -1,15 +1,16 @@
 ---
 interface Props {
+	href: string
     title: string
     topic: string
     thumbnail: string
     author: string
 }
 
-const { title, topic, author, thumbnail } = Astro.props
+const { href, title, topic, author, thumbnail } = Astro.props
 ---
 <a
-	href="/"
+	href={`articles/${href}`}
 	class="article"
 	style={`--article-bg: url(${thumbnail})`}
 >
