@@ -1,6 +1,10 @@
 ---
 import "../styles/index.css"
 import Article from "../components/article.astro"
+
+const articlesList = await Astro.glob("./articles/ca/**/*.mdx")
+
+console.log(articlesList)
 ---
 
 <!doctype html>
@@ -20,13 +24,21 @@ import Article from "../components/article.astro"
 		</nav>
 		<main class="max-w-[1000px] p-[26px] m-auto">
 			<section class="w-full flex flex-col">
-				<Article 
-					href="ca/previsio-temps-31-desembre"
-					title="Neu 25 decembre del 1962"
-					topic="METEO"
-					author="Erik"
-					thumbnail="https://img.beteve.cat/wp-content/uploads/2021/12/VPA-la-gran-nevada-del-1962-ok.jpg"
-				/>
+				{
+					articlesList
+						.sort((a, b) => {
+							return b.frontmatter.date - a.frontmatter.date
+						})
+						.map((post) => (
+							<Article
+								href={post.frontmatter.href}
+								title={post.frontmatter.title}
+								topic={post.frontmatter.topic}
+								author={post.frontmatter.author}
+								thumbnail={post.frontmatter.image}
+							/>
+						))
+				}
 			</section>
 		</main>
 	</body>
